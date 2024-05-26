@@ -1,0 +1,18 @@
+# If you compile project in InteliJ IDEA or VS Code
+out/
+.idea/
+.vscode/
+auxil/
+
+# If you compile project in TeXStudio
+*.aux
+*.bbl
+*.blg
+*.lot
+*.lof
+*.log
+*.out
+main.pdf
+*.synctex.gz
+*.toc
+

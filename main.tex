@@ -66,7 +66,7 @@
   % Název práce / Thesis title
   title.cs={Název bakalářské/diplomové práce},  % název práce v češtině či slovenštině (dle zadání) / thesis title in czech language (according to assignment)
   title.en={Název práce v anglickém jazyce}, % název práce v angličtině / thesis title in english
-  subtitle={(podtitul práce)},   % podtitul práce (nepovinné) / subtitle (optional)
+  %subtitle={(podtitul práce)},   % podtitul práce (nepovinné) / subtitle (optional)
   % Autor / Author
   author.name={Jméno},   % jméno autora / author name
   author.surname={Příjmení},   % příjmení autora / author surname 
@@ -102,6 +102,9 @@
 \clubpenalty=10000
 \widowpenalty=10000
 
+% Nastavení tečkování mezer mezi názvy kapitol a čísly stránek v obsahu
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 
 % začátek dokumentu
 \begin{document}
@@ -113,7 +116,13 @@
   % ----------------------------------------------
   \thispagestyle{empty}
   \setcounter{tocdepth}{3}
+  
+  % Změna písma nadpisu obsahu na bezpatkové (WIP: nutno dodělat pro ostatní jazyky)
+  \renewcommand{\contentsname}{\sffamily Obsah}
+  
   {\hypersetup{hidelinks}\tableofcontents}
+  
+  \newpage
   
   % Seznam obrázků a tabulek (pokud práce obsahuje velké množství obrázků/tabulek)
   % List of figures and list of tables (if the thesis contains a lot of pictures/tables)
@@ -126,6 +135,8 @@
   \fi
    {\hypersetup{hidelinks}\listoffigures}
    \thispagestyle{empty}
+   
+   \newpage
   
   \ifczech
     \renewcommand\listtablename{Seznam tabulek}
@@ -136,6 +147,8 @@
   
   {\hypersetup{hidelinks}\listoftables}
   \thispagestyle{empty}
+  
+  \newpage
 
   % vynechání stránky v oboustranném režimu
   % Skip the page in the two-sided mode
@@ -145,7 +158,7 @@
 
   % Text práce / Thesis text
   % ----------------------------------------------
-  \setcounter{page}{0}
+  \setcounter{page}{1}
   \input{kapitoly}
 
   \iftwoside

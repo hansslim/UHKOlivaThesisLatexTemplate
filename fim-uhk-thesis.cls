@@ -43,8 +43,16 @@
 \fi
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage[czech,slovak,english]{babel}
+\usepackage[main=czech,english,slovak]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+
+% BibLaTeX support
+\usepackage[backend=biber,style=iso-numeric,url=false,noenddot=false]{biblatex}
+\defbibheading{bibliography}[\refname]{\section{Seznam použité literatury}} % TODO: more languages support
+\DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}}
+\renewcommand*{\finentrypunct}{}
+
 \usepackage{cmap}
 \usepackage[T1]{fontenc}
 \usepackage[]{opensans}
@@ -854,7 +862,8 @@ Hradec Králové \hfill \@year
 
 % Příkazy pro TODO (3 alternativy - lze zvolit preferovanou)
 % commands for TODO (3 alternatives - preferred one can be selected)
-\newcommand{\todo}[1]{\textcolor{red}{\textbf{[[#1]]}}}
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{[[TODO #1]]}}}
+\newcommand{\TODO}{\textcolor{red}{\textbf{[[TODO]]}}}
 %\usepackage[colorinlistoftodos,prependcaption,textsize=tiny, disable]{todonotes}
 %\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
 

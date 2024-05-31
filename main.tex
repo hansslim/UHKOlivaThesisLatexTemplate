@@ -1,4 +1,4 @@
-\documentclass[]{fim-uhk-thesis}
+\documentclass[czech]{fim-uhk-thesis}
 %\documentclass[english]{fim-uhk-thesis} % without assignment - for the work start to avoid compilation problem
 % * Je-li práce psaná v anglickém jazyce, je zapotřebí u třídy použít 
 %   parametr english následovně:
@@ -20,91 +20,12 @@
 % Basic packages are at template file fim-uhk-thesis.cls
 % zde můžeme vložit vlastní balíčky / you can place own packages here
 
+\input{beforebegindocument}
 
+\input{projectinfo}
 
-%---rm---------------
-\renewcommand{\rmdefault}{lmr}%zavede Latin Modern Roman jako rm / set Latin Modern Roman as rm
-%---sf---------------
-\renewcommand{\sfdefault}{qhv}%zavede TeX Gyre Heros jako sf
-%---tt------------
-\renewcommand{\ttdefault}{lmtt}% zavede Latin Modern tt jako tt
-
-% vypne funkci šablony, která automaticky nahrazuje uvozovky,
-% aby nebyly prováděny nevhodné náhrady v popisech API apod.
-% disables function of the template which replaces quotation marks
-% to avoid unnecessary replacements in the API descriptions etc.
-\csdoublequotesoff
-
-\usepackage{url}
-
-% =======================================================================
-% Balíček "hyperref" vytváří klikací odkazy v pdf, pokud použijeme pdflatex.
-% Problém je, že balíček hyperref musí být uveden jako poslední, takže nemůže
-% být v šabloně.
-% "hyperref" package create clickable links in pdf if you are using pdflatex.
-% Problem is that this package have to be introduced as the last one so it 
-% can not be placed in the template file.
-
-  \usepackage{color}
-  \usepackage[unicode,colorlinks,hyperindex,plainpages=false,urlcolor=black,linkcolor=black,citecolor=black]{hyperref}
-  \definecolor{links}{rgb}{0,0,0}
-  \definecolor{anchors}{rgb}{0,0,0}
-  \def\AnchorColor{anchors}
-  \def\LinkColor{links}
-  \def\pdfBorderAttrs{/Border [0 0 0] } % bez okrajů kolem odkazů / without margins around links
-  \pdfcompresslevel=9
-
-% Řešení problému, kdy odkazy na obrázky vedou za obrázek
-% This solves the problems with links which leads after the picture
-\usepackage[all]{hypcap}
-
-\projectinfo{
-  % Práce / Thesis
-  project={DEF},            % typ práce BP/SP/DP/DR / thesis type (SP = term project)
-  year={měsíc rok},             % rok odevzdání / year of submission
-  date=\today,             % datum odevzdání / submission date
-  % Název práce / Thesis title
-  title.cs={Název bakalářské/diplomové práce},  % název práce v češtině či slovenštině (dle zadání) / thesis title in czech language (according to assignment)
-  title.en={Název práce v anglickém jazyce}, % název práce v angličtině / thesis title in english
-  %subtitle={(podtitul práce)},   % podtitul práce (nepovinné) / subtitle (optional)
-  % Autor / Author
-  author.name={Jméno},   % jméno autora / author name
-  author.surname={Příjmení},   % příjmení autora / author surname 
-  author.field={Studijní obor},   % obor
-  %author.title.p={}, % titul před jménem (nepovinné) / title before the name (optional)
-  %author.title.a={}, % titul za jménem (nepovinné) / title after the name (optional)
-  % Katedra / Department
-  department={DEF}, % zkratka katedry / abbreviation of the department
-  % Školitel / Supervisor
-  supervisor.name={Jméno},   % jméno školitele / supervisor name 
-  supervisor.surname={Příjmení},   % příjmení školitele / supervisor surname
-  supervisor.title.p={Titul},   % titul před jménem (nepovinné) / title before the name (optional)
-  supervisor.title.a={},    % titul za jménem (nepovinné) / title after the name (optional)
-  % Klíčová slova / Keywords
-  keywords.cs={(typicky 5 – 6 slovních spojení)}, % klíčová slova v českém či slovenském jazyce / keywords in czech or slovak language
-  keywords.en={}, % klíčová slova v anglickém jazyce / keywords in english
-  % Abstrakt / Abstract
-  annotation.cs={Text abstraktu – shrnutí cíle, významu práce a výsledky v ní dosažené. Délka minimálně 100 a maximálně 200 slov.},
-  annotation.en={Abstrakt v anglickém jazyce. Délka minimálně 100 a maximálně 200 slov.},
-  % Prohlášení (u anglicky psané práce anglicky, u slovensky psané práce slovensky) / Declaration (for thesis in english should be in english)
-  declaration={Prohlašuji, že jsem bakalářskou/diplomovou práci zpracoval/zpracovala samostatně a s použitím uvedené literatury.},
-  %declaration={I hereby declare that this Bachelor's thesis was prepared as an original work by the author under the supervision of Mr. X
-% The supplementary information was provided by Mr. Y
-% I have listed all the literary sources, publications and other sources, which were used during the preparation of this thesis.},
-  % Poděkování (nepovinné, nejlépe v jazyce práce) / Acknowledgement (optional, ideally in the language of the thesis)
-  acknowledgment={Děkuji vedoucímu bakalářské/diplomové práce titul, jméno, příjmení za metodické vedení práce a... .}
-  %acknowledgment={Here it is possible to express thanks to the supervisor and to the people which provided professional help
-%(external submitter, consultant, etc.).}
-}
-
-% řeší osamocený první/poslední řádek odstavce na předchozí/následující stránce
-% solves first/last row of the paragraph on the previous/next page
-\clubpenalty=10000
-\widowpenalty=10000
-
-% Nastavení tečkování mezer mezi názvy kapitol a čísly stránek v obsahu
-\usepackage{tocloft}
-\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+% BibLaTeX
+\addbibresource{literatura.bib}
 
 % začátek dokumentu
 \begin{document}
@@ -116,10 +37,8 @@
   % ----------------------------------------------
   \thispagestyle{empty}
   \setcounter{tocdepth}{3}
-  
-  % Změna písma nadpisu obsahu na bezpatkové (WIP: nutno dodělat pro ostatní jazyky)
+
   \renewcommand{\contentsname}{\sffamily Obsah}
-  
   {\hypersetup{hidelinks}\tableofcontents}
   
   \newpage
@@ -128,10 +47,10 @@
   % List of figures and list of tables (if the thesis contains a lot of pictures/tables)
   
   \ifczech
-    \renewcommand\listfigurename{Seznam obrázků}
+    \renewcommand{\listfigurename}{\sffamily Seznam obrázků}
   \fi
   \ifslovak
-    \renewcommand\listfigurename{Zoznam obrázkov}
+    \renewcommand{\listfigurename}{\sffamily Zoznam obrázkov}
   \fi
    {\hypersetup{hidelinks}\listoffigures}
    \thispagestyle{empty}
@@ -139,12 +58,12 @@
    \newpage
   
   \ifczech
-    \renewcommand\listtablename{Seznam tabulek}
+    \renewcommand{\listtablename}{\sffamily Seznam tabulek}
   \fi
   \ifslovak
-    \renewcommand\listtablename{Zoznam tabuliek}
+    \renewcommand{\listtablename}{\sffamily Zoznam tabuliek}
   \fi
-  
+
   {\hypersetup{hidelinks}\listoftables}
   \thispagestyle{empty}
   
@@ -167,31 +86,15 @@
 
   % Použitá literatura / Bibliography
   % ----------------------------------------------
-  \begin{thebibliography}{1}
-  \bibitem{autor01}
-  PŘÍJMENÍ, Jméno. Název knihy : podnázev. Vydání. Místo vydání : Název nakladatelství, rok vydání. Počet stran. ISBN.
-  \bibitem{autor02}
-  Název. Název odpovědné korporace, instituce. Roky vydání (od-do), ročník (od-do). Místo vydání : Název nakladatelství. Standardní číslo (ISSN).
-  \bibitem{autor03}
-  Jméno autora. Název zdrojového dokumentu. Označení vydání. Číslo části. Místo vydání : Název nakladatelství, rok vydání. Rozsah díla. Standardní číslo. Lokace ve zdrojovém dokumentu.
-  \bibitem{autor04}
-  Autor příspěvku. Název příspěvku. In Název zdrojového dokumentu. Primární odpovědnost (autor) za zdrojový dokument. Vydání. Místo vydání : Název nakladatelství, rok. Lokace ve zdrojovém dokumentu.
-  \bibitem{autor05}
-  Autor. Název článku. Název seriálu, rok vydání, ročník, číslo, strany od-do.
-  \bibitem{autor06}
-  PŘÍJMENÍ, Jméno autora. Název monografie nebo www stránky (tag "title") : podnázev [druh média]. Vydání. Místo vydání : Vydavatel, datum publikování, datum poslední revize [citováno dne]. <dostupnost - URL adresa>. Standardní číslo.
-  \bibitem{autor07}
-  PŘÍJMENÍ, Jméno autora. Název zdrojového dokumentu [druh média]. Vydání. Místo vydání : Vydavatel, datum publikování, datum poslední revize [citováno dne]. Označení části nebo kapitoly. Název části nebo kapitoly. <dostupnost -URL adresa>. Standardní číslo.
-  \bibitem{autor08}
-  PŘÍJMENÍ, Jméno autora příspěvku. Název příspěvku [druh média]. In Název zdrojového dokumentu. Vydání. Místo vydání : Vydavatel, datum publikování, datum poslední revize [citováno dne]. <dostupnost -URL adresa>. Standardní číslo.
-  \bibitem{autor09}
-  Název konference nebo fóra [druh média]. Místo vydání : Vydavatel, datum vydání [citováno dne]. <dostupnost -URL adresa>.
-  \end{thebibliography}
+  
+  % BibTeX
+  % \bibliographystyle{iso690}
+  % \bibliography{literatura}
 
-  % nebo BibTeX / or BibTeX
+  \newpage
 
-  %\bibliographystyle{iso690}
-  %\bibliography{literatura}
+  % BibLaTeX
+  \printbibliography
   
   \newpage
 

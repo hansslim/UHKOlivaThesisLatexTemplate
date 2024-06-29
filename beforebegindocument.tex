@@ -44,3 +44,6 @@
 % Nastavení tečkování mezer mezi názvy kapitol a čísly stránek v obsahu
 \usepackage{tocloft}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+% Pro odkaz na zdroj uvnitř přímé citace
+\newcommand{\nonitaliccite}[1]{\textup{\cite{#1}}}

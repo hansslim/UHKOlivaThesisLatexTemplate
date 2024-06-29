@@ -50,8 +50,51 @@
 % BibLaTeX support
 \usepackage[backend=biber,style=iso-numeric,url=false,noenddot=false]{biblatex}
 \defbibheading{bibliography}[\refname]{\section{Seznam použité literatury}} % TODO: more languages support
+% hranaté závorky u citací
 \DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}}
 \renewcommand*{\finentrypunct}{}
+
+% vložení [b.d.]. (bez data) v případě year={nodate}
+% TODO: podpora více jazyků
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map[overwrite=true]{
+      \step[fieldsource=year, match=nodate, final]
+      \step[fieldset=year, fieldvalue={[b.d.].}]
+    }
+  }
+}
+
+% nastavení citace pro typ závěrečných prací (@thesis) dle ISO 690:2022
+% TODO: dodělat podporu dalších jazyků 
+\DeclareFieldFormat{urldate}{\mkbibbrackets{cit.\space#1}}
+
+\DeclareBibliographyDriver{thesis}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{names:primary}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{titles}{}{emph}%
+  \iffieldundef{url}{}{%
+    \printtext{[online]}
+  }%
+  \setunit{\addspace}%
+  \newunit\newblock
+  \printfield{type}%
+  \newunit\newblock
+  \usebibmacro{thesissupervisor}%
+  \newunit\newblock
+  \printlist{location}\printtext{:}
+  \printlist{institution}\printtext{,}
+  \printfield{year}
+  \newunit\newblock
+  \iffieldundef{url}{}{%
+    \printfield{url}
+  }%
+  \newunit\newblock
+  \printurldate\printtext{.}
+  \usebibmacro{finentry}
+}
 
 \usepackage{cmap}
 \usepackage[T1]{fontenc}
@@ -157,12 +200,27 @@
 
 \linespread{1.3}
 \setlength\parindent{0pt}
-\setlength{\parskip}{0pt}
+\setlength{\parskip}{6pt}
 
 % nadpisy / headings
-\titleformat{\section}{\fontfamily{qhv}\fontsize{16pt}{20pt}\selectfont\bfseries}{\thesection }{16pt}{}
-\titleformat{\subsection}{\fontfamily{qhv}\fontsize{14pt}{18pt}\selectfont\bfseries\itshape}{\thesubsection }{16pt}{}
-\titleformat{\subsubsection}{\bfseries}{\thesubsubsection }{16pt}{}
+\titleformat{\section}{
+\fontfamily{qhv}\fontsize{16pt}{20pt}\selectfont\bfseries}{\thesection 
+}{16pt}{}
+
+\titleformat{\subsection}{
+\fontfamily{qhv}\fontsize{15pt}{18pt}\selectfont\bfseries\itshape
+}{\thesubsection }{16pt}{}
+
+\titleformat{\subsubsection}{
+\fontfamily{qhv}\fontsize{14pt}{16pt}\selectfont\bfseries
+}{\thesubsubsection }{16pt}{}
+
+\titleformat{\paragraph}[hang]{
+\fontfamily{qhv}\fontsize{13pt}{14pt}\selectfont\bfseries\itshape
+}{\theparagraph}{16pt}{}
+
+% Nastavení číslování nadpisů 4. úrovně (\paragraph)
+\setcounter{secnumdepth}{4}
 
 
 %-----------------------------------------------------------------------------
@@ -752,6 +810,9 @@ Hradec Králové \hfill \@year
 % Czech quotes are default
 %
 \csdoublequoteson
+
+% zavedení příkazu \csquotes jako přímé citace zdroje (text v českých uvozovkách a v kurzívě)
+\newcommand{\csquotes}[1]{\textit{\uv{#1}}}
 
 %--------------------------------------------------------
 % Oprava pro Čechy a Slováky

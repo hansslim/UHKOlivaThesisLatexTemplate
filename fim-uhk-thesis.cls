@@ -48,7 +48,7 @@
 \usepackage{csquotes}
 
 % BibLaTeX support
-\usepackage[backend=biber,style=iso-numeric,url=false,noenddot=false]{biblatex}
+\usepackage[backend=biber,style=iso-numeric,url=false,noenddot=false,language=czech]{biblatex}
 \defbibheading{bibliography}[\refname]{\section{Seznam použité literatury}} % TODO: more languages support
 % hranaté závorky u citací
 \DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}}

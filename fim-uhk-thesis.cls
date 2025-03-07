@@ -96,6 +96,7 @@
   \usebibmacro{finentry}
 }
 
+\usepackage{lscape}
 \usepackage{cmap}
 \usepackage[T1]{fontenc}
 \usepackage[]{opensans}

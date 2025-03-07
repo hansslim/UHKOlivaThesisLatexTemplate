@@ -47,3 +47,6 @@
 
 % Pro odkaz na zdroj uvnitř přímé citace
 \newcommand{\nonitaliccite}[1]{\textup{\cite{#1}}}
+
+% Pro odkaz na kapitolu složeného z čísla a názvu kapitoly (tučně)
+\newcommand{\boldsecref}[1]{\textbf{\hyperref[#1]{\ref{#1} \nameref{#1}}}}

@@ -46,32 +46,6 @@
   {\hypersetup{hidelinks}\tableofcontents}
   \thispagestyle{empty}
   \newpage
-  
-  % Seznam obrázků a tabulek (pokud práce obsahuje velké množství obrázků/tabulek)
-  % List of figures and list of tables (if the thesis contains a lot of pictures/tables)
-  
-  %\ifczech
-  %  \renewcommand{\listfigurename}{\sffamily Seznam obrázků}
-  %\fi
-  %\ifslovak
-  %  \renewcommand{\listfigurename}{\sffamily Zoznam obrázkov}
-  %\fi
-  % {\hypersetup{hidelinks}\listoffigures}
-  % \thispagestyle{empty}
-   
-  % \newpage
-  
-  %\ifczech
-  %  \renewcommand{\listtablename}{\sffamily Seznam tabulek}
-  %\fi
-  %\ifslovak
-  %  \renewcommand{\listtablename}{\sffamily Zoznam tabuliek}
-  %\fi
-
-  %{\hypersetup{hidelinks}\listoftables}
-  %\thispagestyle{empty}
-  
-  %\newpage
 
   % vynechání stránky v oboustranném režimu
   % Skip the page in the two-sided mode
@@ -99,6 +73,32 @@
 
   % BibLaTeX
   \printbibliography
+  
+  \newpage
+
+  % Seznam obrázků a tabulek (pokud práce obsahuje velké množství obrázků/tabulek)
+  % List of figures and list of tables (if the thesis contains a lot of pictures/tables)
+  
+  \ifczech
+      \renewcommand{\listfigurename}{\sffamily Seznam obrázků}
+  \fi
+  \ifslovak
+      \renewcommand{\listfigurename}{\sffamily Zoznam obrázkov}
+  \fi
+  {\hypersetup{hidelinks}\listoffigures}
+  \thispagestyle{empty}
+  
+  \newpage
+
+  \ifczech
+      \renewcommand{\listtablename}{\sffamily Seznam tabulek}
+   \fi
+  \ifslovak
+      \renewcommand{\listtablename}{\sffamily Zoznam tabuliek}
+  \fi
+
+  {\hypersetup{hidelinks}\listoftables}
+  \thispagestyle{empty}
   
   \newpage
 

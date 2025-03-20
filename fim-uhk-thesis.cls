@@ -129,6 +129,7 @@
 \usepackage{listings}
 \usepackage[toc,page,header]{appendix}
 \usepackage{fancyhdr}
+\usepackage{hyphenat}
 \RequirePackage{titletoc}
 \ifczech
   \usepackage{ae}
